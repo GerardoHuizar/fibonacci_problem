@@ -3,6 +3,7 @@ const state = {
     integer: {
       value: "",
       state: null,
+      regex: /^-?(?:\d+(?:,\d*)?)$/,
     },
     show: true,
   },

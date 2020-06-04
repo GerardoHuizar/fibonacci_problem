@@ -19,7 +19,7 @@
             ></b-form-input>
 
             <b-form-invalid-feedback id="input-live-feedback">
-              Enter number greater than 0
+              Enter number greater than 0 and without decimals
             </b-form-invalid-feedback>
           </b-form-group>
         </div>
@@ -38,7 +38,11 @@
           class="m-0"
         ><strong style="color: red">Form fragment in state:</strong> {{ formData }}</pre>
         <hr />
-        <pre style="color: red" class="m-0" v-show="fibonacciResult">
+        <pre
+          style="color: red"
+          class="m-0"
+          v-show="fibonacciResult || fibonacciResult == 0"
+        >
           closest value to your number in the fibonacci series: {{
             fibonacciResult
           }}
@@ -63,11 +67,13 @@ export default {
     },
     validationInteger() {
       return this.formData.integer.value
-        ? this.formData.integer.value > 0
+        ? this.formData.integer.value >= 0
+          ? this.formData.integer.regex.test(this.formData.integer.value)
+          : false
         : null;
     },
     fibonacciResult() {
-      return this.$store.getters.fibinacciResult;
+      return this.$store.getters.fibonacciResult;
     },
   },
   methods: {
@@ -89,7 +95,7 @@ export default {
       if (currentFn <= userNumber) {
         return this.calculateInmediateNumber(currentFn, prevFn, userNumber);
       }
-      return firstFn;
+      return userNumber == 0 ? 0 : firstFn;
     },
   },
 };

@@ -4,7 +4,7 @@ import Home from '../containers/home/container';
 
 Vue.use(Vuex);
 
-
+// Separate system per module
 const store = new Store({
   modules: {
     home: Home

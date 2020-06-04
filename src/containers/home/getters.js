@@ -1,6 +1,6 @@
 const getters = {
     formData: state => state.form,
-    fibinacciResult: state => state.fibonacciNumber
+    fibonacciResult: state => state.fibonacciNumber
 }
 
 export default getters;
