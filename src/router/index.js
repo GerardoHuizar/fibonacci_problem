@@ -8,12 +8,20 @@ const routes = [
     path: "/",
     name: "Home",
     component: () =>
-      import("../views/Home.vue")
+      import("../views/home/Component.vue")//Lazy Load
+  },
+  {
+    path: "/about",
+    name: "About",
+    component: () =>
+      import("../views/about/Component.vue")
   }
 ];
 
 
 const router = new VueRouter({
+  mode: "history",
+  base: process.env.BASE_URL,
   routes
 });
 
