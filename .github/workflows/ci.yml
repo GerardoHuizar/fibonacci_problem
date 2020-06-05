@@ -20,6 +20,9 @@ jobs:
 
     - name: installing dependencies...
       run: yarn install
+      
+    - name: testing...
+      run: yarn test:unit
 
     - name: build app...
       run: yarn build
